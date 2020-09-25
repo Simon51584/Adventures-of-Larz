@@ -28,10 +28,15 @@ function preload() {
     // this.load.image("items", "assets/images/items.png")
     this.load.spritesheet("items", "assets/images/items.png", { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet("characters", "assets/images/characters.png", { frameWidth: 32, frameHeight: 32 })
+    // on audio load second argument needs to be an array to select appropriate sound file for the browser
+    this.load.audio("goldSound", ["assets/audio/Pickup.wav"])
 
 }
 
 function create () {
+    let goldPickupAudio = this.sound.add("goldSound", { loop: false, volume: 0.2 })
+    
+
     //image method okay if not using the animation on the image
     let button = this.add.image(100, 100, "button1")
     button.setOrigin(0.5,0.5)
@@ -54,7 +59,11 @@ function create () {
     this.player.body.setCollideWorldBounds(true)
 
     this.physics.add.collider(this.player, this.wall)
-    this.physics.add.overlap(this.player, this.chest, function() { console.log("overlap")})
+    this.physics.add.overlap(this.player, this.chest, function(player, chest) { goldPickupAudio.play(); chest.destroy()})
+    // audio option only plays once
+    // player overlaps
+    // check if the audio is playing
+    // destroy the game object
 
     this.cursors = this.input.keyboard.createCursorKeys()
     //This will allow Phaser to detect keyboard inputs
