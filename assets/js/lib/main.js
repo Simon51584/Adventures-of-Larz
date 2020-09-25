@@ -40,12 +40,21 @@ function create () {
     this.add.sprite(300,100, "button1")
     // button.setOrigin(0, 0)
 
-    this.add.image(300,300, "items", 0)
+    this.chest = this.physics.add.image(300,300, "items", 0)
+    
 
     this.physics.add.image(500, 100, "button1")
+    this.wall = this.physics.add.image(500, 100, "button1")
+    this.wall.setImmovable()
 
     this.player = this.physics.add.image(32, 32, "characters", 5)
     this.player.setScale(2)
+    
+    //this prevents player from going outside of the Camera area
+    this.player.body.setCollideWorldBounds(true)
+
+    this.physics.add.collider(this.player, this.wall)
+    this.physics.add.overlap(this.player, this.chest, function() { console.log("overlap")})
 
     this.cursors = this.input.keyboard.createCursorKeys()
     //This will allow Phaser to detect keyboard inputs
