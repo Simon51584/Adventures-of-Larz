@@ -44,7 +44,7 @@ function create () {
 
     this.physics.add.image(500, 100, "button1")
 
-    this.player = this.physics.add.image(32, 32, "characters", 5)
+    this.player = this.physics.add.image(32, 32, "characters", 8)
     this.player.setScale(2)
 
     this.cursors = this.input.keyboard.createCursorKeys()
