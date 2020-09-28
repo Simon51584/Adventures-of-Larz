@@ -1,0 +1,9 @@
+ Game Scenes 
+    - Boot: load assets
+    - Title:  title, play button, player selection screen
+    - Game: main logic
+    - Ui: display current cold count
+
+ Classes: 
+    - Player: creating the player game object, handle the player input
+    - Chest: creating the chest game object, how much gold
