@@ -73,7 +73,7 @@ class GameScene extends Phaser.Scene {
 
     addCollisions() {
         // check for collisions betrween the player and the blocked layer
-        this.physics.add.collider(this.player, this.blockedLayer);
+        this.physics.add.collider(this.player, this.map.blockedLayer);
         // check for overlapbs between player and chest ghame objects
         this.physics.add.overlap(this.player, this.chests, this.collectChest, null, this);
     }
@@ -92,23 +92,7 @@ class GameScene extends Phaser.Scene {
     }
     
     createMap() {
-        // create the tilemap
-        this.map = this.make.tilemap({ key: "map" });
-        // add the tileset image to our map
-        this.tiles = this.map.addTilesetImage("background", "background", 32, 32, 1, 2);
-        // create our background layer
-        this.backgroundLayer = this.map.createStaticLayer("background", this.tiles, 0, 0);
-        this.backgroundLayer.setScale(2);
-        // create blocked layer
-        this.blockedLayer = this.map.createStaticLayer("blocked", this.tiles, 0 , 0);
-        this.blockedLayer.setScale(2);
-        this.blockedLayer.setCollisionByExclusion([-1]);
-
-        // update the world bounds
-        this.physics.world.bounds.width = this.map.widthInPixles * 2;
-        this.physics.world.bounds.height = this.map.heightInPixles * 2;
-
-        // limit the camera to the size of our map
-        this.cameras.main.setBounds(0, 0, this.map.widthInPixles * 2, this.map.heightInPixles * 2);
+        // create map
+        this.map = new Map(this, "map", "background", "background", "blocked")
     }
 }
