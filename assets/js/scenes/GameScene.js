@@ -4,6 +4,10 @@ class GameScene extends Phaser.Scene {
 
     }
 
+    init() {
+        this.scene.launch("Ui")
+    }
+
     create() {
         let goldPickupAudio = this.sound.add("goldSound", { loop: false, volume: 0.2 })
     
