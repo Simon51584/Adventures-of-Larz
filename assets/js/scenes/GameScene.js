@@ -9,7 +9,7 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
-        let goldPickupAudio = this.sound.add("goldSound", { loop: false, volume: 0.2 })
+        this.goldPickupAudio = this.sound.add("goldSound", { loop: false, volume: 0.2 })
     
 
         //image method okay if not using the animation on the image
@@ -26,7 +26,7 @@ class GameScene extends Phaser.Scene {
         this.player = new Player(this, 32, 32, "characters", 0)
     
         this.physics.add.collider(this.player, this.wall)
-        this.physics.add.overlap(this.player, this.chest, function(player, chest) { goldPickupAudio.play(); chest.destroy()})
+        this.physics.add.overlap(this.player, this.chest, this.collectChest, null, this)
         // all options on how to solve weird chest noise bug
         // audio option only plays once
         // player overlaps
@@ -41,5 +41,14 @@ class GameScene extends Phaser.Scene {
     update() {
         //important to call update method
         this.player.update(this.cursors);
+    }
+
+    collectChest(player, chest){
+        // play gold pickup sound
+        this.goldPickupAudio.play();
+        // update score in the ui 
+        this.events.emit("updateScore", chest.coins);
+        // destroy the chest game object
+        chest.destroy()
     }
 }
