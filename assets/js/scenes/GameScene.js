@@ -88,6 +88,7 @@ class GameScene extends Phaser.Scene {
         // spawn a new chest
         this.time.delayedCall(1000, this.spawnChest(), [], this);
     }
+    
     createMap() {
         // create the tilemap
         this.map = this.make.tilemap({ key: "map" });
@@ -99,5 +100,12 @@ class GameScene extends Phaser.Scene {
         // create blocked layer
         this.blockedLayer = this.map.createStaticLayer("blocked", this.tiles, 0 , 0);
         this.blockedLayer.setScale(2);
+
+        // update the world bounds
+        this.physics.world.bounds.width = this.map.widthInPixles * 2;
+        this.physics.world.bounds.height = this.map.heightInPixles * 2;
+
+        // limit the camera to the size of our map
+        this.cameras.main.setBounds(0, 0, this.map.widthInPixles * 2, this.map.heightInPixles * 2);
     }
 }
