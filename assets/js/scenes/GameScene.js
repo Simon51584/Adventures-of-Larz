@@ -18,7 +18,7 @@ class GameScene extends Phaser.Scene {
         this.addCollisions();
         this.createInput();
         
-        this.createGameManager();
+        // this.createGameManager();
 
     }
 
