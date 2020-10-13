@@ -52,7 +52,6 @@ class GameScene extends Phaser.Scene {
         const location = this.chestPositions[Math.floor(Math.random() * this.chestPositions.length)]
         
         let chest = this.chests.getFirstDead();
-        console.log(chest);
         if (!chest) {
             const chest = new Chest(this, location[0], location[1], "items", 0);
             // add chest to chests group
