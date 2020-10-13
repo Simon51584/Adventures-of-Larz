@@ -8,7 +8,7 @@ class GameManager {
 
         this.playerLocations = [];
         this.chestLocations = {};
-        this.mopnsterLocations = {};
+        this.monsterLocations = {};
     }
 
     setup() {
@@ -19,7 +19,7 @@ class GameManager {
     }
 
     parseMapData() {
-        this.mapData.array.forEach((layer) => {
+        this.mapData.forEach((layer) => {
             if (layer.name === "player_locations") {
                 layer.objects.forEach((obj) => {
                     this.playerLocations.push([obj.x, obj.y]);
@@ -53,7 +53,9 @@ class GameManager {
     }
 
     spawnPlayer() {
-        
+        const location = this.playerLocations[Math.floor(Math.random() * this.playerLocations.length)];
+        this.scene.events.emit("spawnPlayer", location);
+
 
     }
 
