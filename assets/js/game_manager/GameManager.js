@@ -49,14 +49,34 @@ class GameManager {
     }
 
     setupSpawners() {
-
+        // create chest spawners
+        Object.keys(this.chestLocations).forEach((key) => {
+            const config = {
+                spawnInterval: 3000,
+                limit: 3,
+                spawnerType: "CHEST",
+                id: `chest-${key}`
+            };
+            const spawner = new Spawner(
+                config, 
+                this.chestLocations[key], 
+                this.addChest.bind(this), 
+                this.deleteChest.bind(this)
+            );
+            this.spawners[spawner.id] = spawner;
+        });
     }
 
     spawnPlayer() {
         const location = this.playerLocations[Math.floor(Math.random() * this.playerLocations.length)];
         this.scene.events.emit("spawnPlayer", location);
+    }
 
+    addChest() {
 
     }
 
+    deleteChest() {
+
+    }
 }
