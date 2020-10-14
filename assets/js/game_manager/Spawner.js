@@ -20,7 +20,7 @@ class Spawner {
         }, this.spawnInterval);
     }
     spawnObject() {
-        console.log("spawning object");
+        // console.log("spawning object");
 
     }
 
