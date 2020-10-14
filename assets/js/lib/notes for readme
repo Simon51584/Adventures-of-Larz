@@ -7,3 +7,7 @@
  Classes: 
     - Player: creating the player game object, handle the player input
     - Chest: creating the chest game object, how much gold
+
+ GameManager Class
+   Spawner will be responsible for spawning
+      ChestModel
