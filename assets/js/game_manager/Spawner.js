@@ -20,11 +20,17 @@ class Spawner {
         }, this.spawnInterval);
     }
     spawnObject() {
-        // console.log("spawning object");
+        console.log("spawning object");
+        if (this.objectType === "CHEST") {
+            this.spawnChest();
+        }
 
     }
 
     spawnChest() {
+        const location = this.pickRandomLocation();
+        const chest = new ChestModel();
+        this.addObject();
     }
 
     pickRandomLocation() {
