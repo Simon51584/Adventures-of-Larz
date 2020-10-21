@@ -46,8 +46,8 @@ class Spawner {
         return location;
     }
 
-    removeObject () {
-
+    removeObject (id) {
+        this.objectsCreated = this.objectsCreated.filter(obj => obj.id !== id)
     }
 }
 
