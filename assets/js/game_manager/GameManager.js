@@ -49,7 +49,6 @@ class GameManager {
     }
 
     setupSpawners() {
-        // create chest spawners
         Object.keys(this.chestLocations).forEach((key) => {
             const config = {
                 spawnInterval: 3000,

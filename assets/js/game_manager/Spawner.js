@@ -48,7 +48,9 @@ class Spawner {
 
     removeObject (id) {
         this.objectsCreated = this.objectsCreated.filter(obj => obj.id !== id)
+        this.objectsCreated().filter.  
     }
+    this.id
 }
 
 
