@@ -53,9 +53,10 @@ class GameManager {
             const config = {
                 spawnInterval: 3000,
                 limit: 3,
-                spawnerType: "CHEST",
-                id: `chest-${key}`
+                spawnerType: SpawnerType.CHEST,
+                id: `chest-${key}`,
             };
+            
             const spawner = new Spawner(
                 config, 
                 this.chestLocations[key], 
@@ -76,6 +77,6 @@ class GameManager {
     }
 
     deleteChest(chestId) {
-
+        delete this.chests[chestId];
     }
 }
