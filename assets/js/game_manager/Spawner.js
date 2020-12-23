@@ -20,8 +20,7 @@ class Spawner {
         }, this.spawnInterval);
     }
     spawnObject() {
-        console.log('spawning object')
-        if (this.objectType === 'CHEST') {
+        if (this.objectType === SpawnerType.CHEST) {
             this.spawnChest();
         }
 
@@ -46,7 +45,7 @@ class Spawner {
         return location;
     }
 
-    removeObject (id) {
+    removeObject(id) {
         this.objectsCreated = this.objectsCreated.filter(obj => obj.id !== id)
         this.deleteObject(id);  
     }
