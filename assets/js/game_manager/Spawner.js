@@ -20,7 +20,8 @@ class Spawner {
         }, this.spawnInterval);
     }
     spawnObject() {
-        if (this.objectType === SpawnerType.CHEST) {
+        console.log('spawning object')
+        if (this.objectType === 'CHEST') {
             this.spawnChest();
         }
 
